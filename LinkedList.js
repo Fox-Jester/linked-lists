@@ -54,8 +54,51 @@ class LinkedList{
         return current;
     }
 
+    pop(){
+        const newTail = this.at(this.length - 2);
+        newTail.next = null;
+        this.tail = newTail;
+        this.length--
+    }
+
+    find(value){
+        if(this.length === 0){
+            return null
+        }
+    
+        let current = this.head;
+    
+        for(let i = 0; i <= (this.length - 1); i++){
+            if(current.data === value){
+                return i;
+            }
+            current = current.next;
+        }
+        return null
+
+    }
+
+    contains(value){
+        const result = this.find(value)
+        if(result || result === 0){
+            return true
+        }
+        return false
+    }
+
     print(){
 
+        let printedList = "";
+        let current = this.head;
+        for(let i = 0; i <= (this.length - 1); i++){
+            let newString = `${current.data}`
+            if(current.next){
+                newString = newString + " -> "
+            }
+            printedList = printedList + newString;
+            current = current.next;
+        }
+        return printedList;
     }
 }
 
@@ -68,3 +111,6 @@ class Node{
 }
 
 const ll = new LinkedList()
+ll.append("wah");
+ll.append("shuba");
+ll.append("peko");
